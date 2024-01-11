@@ -9,16 +9,39 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-ssm": "^3.485.0",
+    "@chatscope/chat-ui-kit-react": "^1.10.1",
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mantine/core": "^7.4.1",
+    "@mantine/form": "^7.4.1",
+    "@mantine/hooks": "^7.4.1",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@nathanstitt/sundry": "^1.8.2",
+    "@sentry/serverless": "^7.93.0",
+    "@types/express": "^4.17.21",
+    "boxible": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "dynamodb-onetable": "^2.7.1",
+    "fetch-event-source-hperrin": "^3.0.0",
+    "jose": "^5.2.0",
+    "next": "14.0.4",
+    "openai": "^4.24.3",
+    "penpal": "^6.2.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "sass": "^1.69.7",
+    "server-only": "^0.0.1",
+    "tabler-icons-react": "^1.56.0",
+    "telefunc": "^0.1.70"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5"
   }
 }

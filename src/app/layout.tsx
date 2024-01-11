@@ -1,6 +1,14 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+const isBrowser = typeof window !== 'undefined'
+
+import { config } from 'telefunc/client'
+
+if (isBrowser) {
+  config.telefuncUrl = '/api/_telefunc'
+}
+
 
 const inter = Inter({ subsets: ['latin'] })
 
