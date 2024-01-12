@@ -1,6 +1,8 @@
 import Counter from './counter'
-import { getCurrentUser } from '@/server/user'
-import { ChatPanel  } from '@/components/chat/chat-panel'
+import { currentUserEligibility } from '@/server/eligibility'
+import { ContentPanel  } from './panel'
+
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Staxly ChatBot',
@@ -9,16 +11,15 @@ export const metadata: Metadata = {
 
 export default async function Page() {
 
-  const user = await getCurrentUser()
+    const user = await currentUserEligibility()
 
 
-  if (!user) return null
 
-  return (
-    <div>
-      <h1>Hello, {user.first_name}!</h1>
-      <Counter />
-      <ChatPanel user={user} />
-    </div>
-  )
+    return (
+        <div>
+            <h1>Hello, {user.first_name}!</h1>
+            <Counter />
+            <ContentPanel user={user} />
+        </div>
+    )
 }

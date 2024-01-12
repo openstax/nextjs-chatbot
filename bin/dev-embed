@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export PUBLIC_ENV__CHAT_URL=http://localhost:3000/chat/embed/icon
+export PUBLIC_ENV__DEV_MODE=true
+
+npx parcel --port 8233 --no-hmr src/embed/chatbot-embed.ts

@@ -100,7 +100,9 @@ class Embed {
             wrapper.style.float = config.float
         }
         if (config.fitContent !== false) {
-            iframeResizer({ checkOrigin: false, sizeWidth: true, log: false }, wrapper)
+            setTimeout(() => {
+                iframeResizer({ checkOrigin: false, sizeWidth: true, log: false }, wrapper)
+            }, 20)
             // set initial size small so the resizer will expand
             wrapper.style.width = '10px'
         }

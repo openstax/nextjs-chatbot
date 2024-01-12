@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import '@mantine/core/styles.css'
 const isBrowser = typeof window !== 'undefined'
+import { Providers } from '@/components/providers';
 
 import { config } from 'telefunc/client'
 
@@ -24,7 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+          <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

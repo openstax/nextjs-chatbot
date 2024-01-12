@@ -28,12 +28,12 @@ export interface UserLocation {
     region: string
 }
 
-export type UserEligibility = "NEEDS_VERIFICATION" | "ELIGIBLE" | "INELIGIBLE"
+export type UserEligibilityState = "NEEDS_VERIFICATION" | "ELIGIBLE" | "INELIGIBLE" | "NEEDS_LOGIN"
 
-export type UserEligibilityReply = {
+export type UserEligibility = {
     user?: ChatbotUser,
-    eligibility: UserEligibility
-    userLocation?: UserLocation
+    eligibility: UserEligibilityState
+    location?: UserLocation
 }
 export interface OpenStaxUser {
     uuid: string;

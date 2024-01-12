@@ -1,14 +1,14 @@
-import { useState, dayjs } from "#lib/common";
+import { useState } from "@/lib/common";
 import { EmbedContext } from "../../embed/api";
 import Staxly from "@/components/assets/staxly.svg";
 import { matches, useForm, UseFormReturnType } from "@mantine/form";
 import { Anchor, Button, Checkbox, Drawer, Group, Image, Radio, Stack, Text, TextInput, NumberInput } from "@mantine/core";
-import { useFetchUser } from "#lib/hooks";
-import { ChatbotUser, UserLocation } from "#lib/types";
-import { getUserAge } from "#lib/util";
-import { useEmbedCommunicationContext } from '../../pages/chat/embed/communication'
-import { IconExternalLink } from "@tabler/icons-react";
-import { onUserVerification } from "#server/api.telefunc";
+
+import { ChatbotUser, UserLocation } from "@/lib/types";
+import { getUserAge } from "@/lib/util";
+import { useEmbedCommunicationContext } from '@/lib/embed-communication'
+import { IconExternalLink } from "@tabler/icons-react"
+import { onUserVerification } from "@/server/api.telefunc";
 import { FC } from "react";
 
 interface IntroFormValues {
@@ -17,7 +17,7 @@ interface IntroFormValues {
     acceptedTOU: boolean
 }
 
-const CURRENT_YEAR = dayjs().year()
+const CURRENT_YEAR = (new Date()).getFullYear()
 
 export const Introduction: FC<{
     context: EmbedContext,
@@ -27,7 +27,6 @@ export const Introduction: FC<{
     const [user, setUser] = useState<ChatbotUser | undefined>(undefined)
     const [userLocation, setUserLocation] = useState<UserLocation | undefined>(undefined)
 
-    const { refetch } = useFetchUser(context.user?.uuid)
 
     const form = useForm<IntroFormValues>({
         initialValues: {

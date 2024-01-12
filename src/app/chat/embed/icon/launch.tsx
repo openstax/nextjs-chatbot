@@ -1,18 +1,22 @@
 'use client'
 
-
+import 'iframe-resizer'
+import styled from '@emotion/styled'
+import { UserEligibility } from '@/lib/types';
 import { LaunchIcon } from '@/components/launch-icon'
 import './styles.scss';
 import { useMediaQuery } from "@mantine/hooks"
+import { useEmbedCommunication, EmbedCommunicationProvider } from '@/lib/embed-communication'
 
-import { useEmbedCommunicationContext } from '@/lib/embed-communication'
 
-export const LoggedInIcon = () => {
-    const {api, context} = useEmbedCommunicationContext();
+export const LoggedIn = () => {
 
+    const [api] = useEmbedCommunication();
+    console.log(api)
     const isMobile = useMediaQuery('(max-device-width: 480px)', false, { getInitialValueInEffect: false });
 
     const onClick = () => {
+
         const windowPosition = {
             bottom: isMobile ? '0' : '20px',
             right: isMobile ? '0' : '20px',
@@ -32,9 +36,27 @@ export const LoggedInIcon = () => {
     }
 
     return (
+        <LaunchIcon onClick={onClick} isOpen={false} />
+    )
+}
 
-            <LaunchIcon onClick={onClick} isOpen={false} />
+
+const Wrapper = styled.div({
+    width: 150,
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+})
 
 
+export const Icon:React.FC<{ user: UserEligibility }> = ({ user }) => {
+    if (user.eligibility == 'INELIGIBLE') {
+        return null
+    }
+
+    const icon = user.eligibility == 'NEEDS_LOGIN' ? <LaunchIcon isOpen={false} /> : <LoggedIn />
+
+    return (
+        <EmbedCommunicationProvider><Wrapper>{icon}</Wrapper></EmbedCommunicationProvider>
     )
 }

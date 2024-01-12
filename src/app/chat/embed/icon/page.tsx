@@ -1,6 +1,5 @@
-import { getCurrentUser } from '@/server/user'
-import { LoggedInIcon } from './logged-in'
-import { AnonIcon } from './anon'
+import { currentUserEligibility } from '@/server/eligibility'
+import { Icon } from './launch'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,13 +7,10 @@ export const metadata: Metadata = {
   description: 'launch Staxly chatbot',
 }
 
+
 export default async function Page() {
 
-    const user = await getCurrentUser()
+    const user = await currentUserEligibility()
 
-    if (user) {
-        return <LoggedInIcon />
-    }
-
-    return <AnonIcon />
+    return <Icon user={user} />
 }

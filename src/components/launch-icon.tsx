@@ -5,8 +5,10 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const Icon = styled.div({
     maxWidth: '150px',
-    cursor: 'pointer',
     marginTop: 80,
+    '&[role="button"]': {
+        cursor: 'pointer',
+    }
 })
 
 const SVG = (props: SVGProps<SVGSVGElement>) => (
@@ -212,7 +214,7 @@ export const LaunchIcon: FC<{ onClick?:() => void, isOpen: boolean }> = ({ onCli
     return (
         <Icon
             className="staxly-animation"
-            role="button"
+            role={onClick ? 'button' : ''}
             onClick={onClick}
         >
             <Popover width={140} opened position="top-end" withArrow arrowOffset={(iconDimension/2) - 6} offset={{ mainAxis: 7, crossAxis: 160 }} arrowSize={12}>

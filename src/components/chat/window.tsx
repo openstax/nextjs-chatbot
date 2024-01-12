@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom'
 import { Rnd } from 'react-rnd'
 import { css } from '@emotion/css'
-import { ChatPanel, ChatPanelProps } from './chat-panel'
+import { ChatPanel, ChatPanelProps } from './panel'
 
 export const ChatWindow = ({ ...props }: ChatPanelProps) => {
     if (!props.isOpen) return null
